@@ -1,6 +1,7 @@
 package proportional;
 
 import com.cyberbotics.webots.controller.DistanceSensor;
+import com.cyberbotics.webots.controller.LightSensor;
 
 import basic.AbstractProportionalController;
 import basic.IController;
@@ -9,7 +10,7 @@ import strategies.*;
 
 public class ProportionalReactive extends AbstractProportionalController implements IController {
 
-	private static int TIME_STEP = 16;
+	private static int TIME_STEP = 16; // do something all 16 miliseconds
 
 	private static int MAX_SENSOR_VALUE = 200;
 
@@ -21,29 +22,39 @@ public class ProportionalReactive extends AbstractProportionalController impleme
 	private static int MIN_SPEED = 0; // min. motor speed
 	private static int MAX_SPEED = 1000; // max. motor speed
 
-	private DistanceSensor[] sensors; // Array with all distance sensors
-
+	private DistanceSensor[] pSensors; // Array with all distance sensors
+	private LightSensor[] lSensors; //Array with light sensors
+	
 	public ProportionalReactive(Strategy strat, float[][] matrix) {
 		super(strat, matrix);
 	}
 
 	@Override
 	public void run() {
-
+		
+		/* all 16 miliseconds.. */
 		while (step(TIME_STEP) != -1) {
 			
-			if (sensors[S_FRONT_LEFT].getValue() > MAX_SENSOR_VALUE			   
-			    || sensors[S_LEFT].getValue() > MAX_SENSOR_VALUE) {
-				// drive right - reached a wall
-				driveRight();
-			} else if (sensors[S_FRONT_RIGHT].getValue() > MAX_SENSOR_VALUE			   
-			    || sensors[S_RIGHT].getValue() > MAX_SENSOR_VALUE) {
-				// drive left - reached a wall
-				driveLeft();
-			} else {
-				// drive forward if nothing is in front of the robot 
-				driveForward();
-			}
+			/* TODO */ 
+			
+//			// drive right - reached a wall
+//			if (sensors[S_FRONT_LEFT].getValue() > MAX_SENSOR_VALUE			   
+//			    || sensors[S_LEFT].getValue() > MAX_SENSOR_VALUE) {
+//				
+//				driveRight();	
+//			}
+//			
+//			// drive left - reached a wall
+//			if (sensors[S_FRONT_RIGHT].getValue() > MAX_SENSOR_VALUE			   
+//			    || sensors[S_RIGHT].getValue() > MAX_SENSOR_VALUE) {
+//				
+//				driveLeft();
+//			} 
+//			
+//			// drive forward if nothing is in front of the robot 
+//			else {
+//				driveForward();
+//			}
 			
 		}
 
