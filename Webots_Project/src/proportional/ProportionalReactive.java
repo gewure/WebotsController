@@ -21,9 +21,13 @@ public class ProportionalReactive extends AbstractProportionalController impleme
 	
 	private static int MIN_SPEED = 0; // min. motor speed
 	private static int MAX_SPEED = 1000; // max. motor speed
+	private static int MAX_LIGHT = 4000;
+	private static int MIN_LIGHT = 0;
 
 	private DistanceSensor[] pSensors; // Array with all distance sensors
 	private LightSensor[] lSensors; //Array with light sensors
+	
+	private float[] constant; //constants for proportional-matrix 
 	
 	public ProportionalReactive(Strategy strat, float[][] matrix) {
 		super(strat, matrix);
@@ -36,6 +40,10 @@ public class ProportionalReactive extends AbstractProportionalController impleme
 		while (step(TIME_STEP) != -1) {
 			
 			/* TODO */ 
+			// a = K * s + c 
+			
+			
+			
 			
 //			// drive right - reached a wall
 //			if (sensors[S_FRONT_LEFT].getValue() > MAX_SENSOR_VALUE			   
@@ -77,6 +85,20 @@ public class ProportionalReactive extends AbstractProportionalController impleme
 		// TODO Auto-generated method stub
 
 	}
+	
+	
+	public float[] getDirection() {
+		float[] direction = null;
+		
+		for(int i=0; i<2; i++) {
+			for(int j=0;j<2; j++) {
+				direction[i]=123;
+			}
+		}
+		
+		return direction;
+	}
+	
 
 	public void main(String[] args) {
 		

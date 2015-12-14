@@ -2,6 +2,7 @@ package bangbang;
 
 import com.cyberbotics.webots.controller.DifferentialWheels;
 import com.cyberbotics.webots.controller.DistanceSensor;
+import com.cyberbotics.webots.controller.LightSensor;
 
 public class BangBangBasicReactive extends DifferentialWheels {
 	private static int TIME_STEP = 16;
@@ -17,7 +18,8 @@ public class BangBangBasicReactive extends DifferentialWheels {
 
 
 	private DistanceSensor[] sensors; // Array with all distance sensors
-
+	private LightSensor[] lSensors; //Array with light sensors
+	
 	/**
 	 * Constructor
 	 */
