@@ -3,6 +3,8 @@ package proportional;
 import com.cyberbotics.webots.controller.DistanceSensor;
 import com.cyberbotics.webots.controller.LightSensor;
 
+import basic.ProportionalAbstract;
+
 public class ProportionalWallFollowing extends ProportionalAbstract {
 
     // A01aLightProportional constructor
@@ -23,12 +25,12 @@ public class ProportionalWallFollowing extends ProportionalAbstract {
             distancesensors[i].enable(10);
         }
 
-        _lightsensors = new LightSensor[0];
+        lightsensors = new LightSensor[0];
 
-        _matrix = new double[][] { new double[] { 0, 0, 0, 0, 0, 1, 0, 0 },
+        matrix = new double[][] { new double[] { 0, 0, 0, 0, 0, 1, 0, 0 },
                 new double[] {  -1, 0, 0, 0, 0, 1, 0, -1 } };
 
-        _sensorVector = new double[distancesensors.length];
+        sensorVector = new double[distancesensors.length];
     }
 
     public static void main(String[] args) {

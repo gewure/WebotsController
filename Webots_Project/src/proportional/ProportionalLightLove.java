@@ -7,6 +7,8 @@ package proportional;
 import com.cyberbotics.webots.controller.DistanceSensor;
 import com.cyberbotics.webots.controller.LightSensor;
 
+import basic.ProportionalAbstract;
+
 public class ProportionalLightLove extends ProportionalAbstract {
 
     /**
@@ -16,7 +18,7 @@ public class ProportionalLightLove extends ProportionalAbstract {
 
         // call super Constructor
         super();
-        _lightsensors = new LightSensor[] {
+        lightsensors = new LightSensor[] {
                 getLightSensor("ls5"), // S_LEFT
                 getLightSensor("ls6"), // S_MID_LEFT
                 getLightSensor("ls7"), // S_FRONT_LEFT
@@ -25,21 +27,21 @@ public class ProportionalLightLove extends ProportionalAbstract {
                 getLightSensor("ls0") }; // S_FRONT_RIGHT
 
         for (int i = 0; i < 6; i++)
-            _lightsensors[i].enable(10);
+            lightsensors[i].enable(10);
 
         // get distanceSensors and save them in array
-        _distancesensors = new DistanceSensor[] {
+        distancesensors = new DistanceSensor[] {
                 getDistanceSensor("ps7"), // S_FRONT_LEFT
                 getDistanceSensor("ps0"), // S_FRONT_RIGHT
         };
 
         for (int i = 0; i < 2; i++)
-            _distancesensors[i].enable(10);
+            distancesensors[i].enable(10);
 
-        _matrix = new double[][] { new double[] { 0.1, 0.2, 0.3, 0, 0, 0, -3.0, -2.0 },
+        matrix = new double[][] { new double[] { 0.1, 0.2, 0.3, 0, 0, 0, -3.0, -2.0 },
                 new double[] {  0, 0, 0, 0.1, 0.2, 0.3, -3.0, -2.0 } };
 
-        _sensorVector = new double[_lightsensors.length + _distancesensors.length];
+        sensorVector = new double[lightsensors.length + distancesensors.length];
 
     }
 
