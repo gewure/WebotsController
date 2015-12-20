@@ -1,8 +1,5 @@
-package bangbang; /**
- * @author Martin Muench, Sonja Kopf
- * @date   09-12-2013
- *
- */
+package bangbang;
+
 import com.cyberbotics.webots.controller.DifferentialWheels;
 import com.cyberbotics.webots.controller.LightSensor;
 

@@ -3,6 +3,8 @@
   <groupId>Webots_Project</groupId>
   <artifactId>Webots_Project</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+
+
   <build>
     <sourceDirectory>src</sourceDirectory>
     <resources>
