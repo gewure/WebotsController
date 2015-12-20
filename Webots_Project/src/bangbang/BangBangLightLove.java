@@ -16,6 +16,7 @@ public class BangBangLightLove extends DifferentialWheels {
     // private static int S_BACK_LEFT = 5; // Sensor back left
     private static int MIN_SPEED = 0; // min. motor speed
     private static int MAX_SPEED = 1000; // max. motor speed
+    private static int STOPRANGE = 4000; //how close to light he should stop.
     private LightSensor[] lightsensors; // Array with all light sensors
     private DistanceSensor[] distancesensors; // Array with all light sensors
 
@@ -27,7 +28,7 @@ public class BangBangLightLove extends DifferentialWheels {
         //call superconstructor
         super();
 
-        lightsensors = new LightSensor[] {
+        lightsensors = new LightSensor[]{
                 getLightSensor("ls5"), // S_LEFT
                 getLightSensor("ls7"), // S_FRONT_LEFT
                 getLightSensor("ls0"), // S_FRONT_RIGHT
@@ -38,7 +39,7 @@ public class BangBangLightLove extends DifferentialWheels {
             lightsensors[i].enable(10);
 
         // get distanceSensors and save them in array
-        distancesensors = new DistanceSensor[] {
+        distancesensors = new DistanceSensor[]{
                 getDistanceSensor("ps5"), // S_LEFT
                 getDistanceSensor("ps7"), // S_FRONT_LEFT
                 getDistanceSensor("ps0"), // S_FRONT_RIGHT
@@ -54,17 +55,22 @@ public class BangBangLightLove extends DifferentialWheels {
         while (step(TIME_STEP) != -1) {
 
             // stop if wall/light is too close
-            if(distancesensors[S_FRONT_LEFT].getValue() >= MAX_SENSOR_VALUE || distancesensors[S_FRONT_RIGHT].getValue() >= MAX_SENSOR_VALUE) {
+            if (distancesensors[S_FRONT_LEFT].getValue() >= MAX_SENSOR_VALUE || distancesensors[S_FRONT_RIGHT].getValue() >= MAX_SENSOR_VALUE) {
                 stop();
             } else {
-                if (lightsensors[S_FRONT_LEFT].getValue() < lightsensors[S_FRONT_RIGHT].getValue()
-                        || lightsensors[S_LEFT].getValue() < lightsensors[S_RIGHT].getValue()) {
+
+                if (lightsensors[S_FRONT_LEFT].getValue() < lightsensors[S_FRONT_RIGHT].getValue() || lightsensors[S_LEFT].getValue() < lightsensors[S_RIGHT].getValue()) {
                     // drive to the left (where the light is)
                     driveLeft();
-                } else if (lightsensors[S_FRONT_RIGHT].getValue() < lightsensors[S_FRONT_LEFT].getValue()
-                        || lightsensors[S_RIGHT].getValue() < lightsensors[S_LEFT].getValue()) {
+
+                } else if (lightsensors[S_FRONT_RIGHT].getValue() < lightsensors[S_FRONT_LEFT].getValue() || lightsensors[S_RIGHT].getValue() < lightsensors[S_LEFT].getValue()) {
                     // drive to the right (where the light is)
                     driveRight();
+
+                } else if (lightsensors[S_FRONT_LEFT].getValue() > STOPRANGE && lightsensors[S_FRONT_RIGHT].getValue() > STOPRANGE) {
+                    //reached light, stop.
+                    stop();
+
                 } else {
                     // drive forward
                     driveForward();

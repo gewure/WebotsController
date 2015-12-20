@@ -1,9 +1,8 @@
 package proportional;
 
+import basic.ProportionalAbstract;
 import com.cyberbotics.webots.controller.DistanceSensor;
 import com.cyberbotics.webots.controller.LightSensor;
-
-import basic.ProportionalAbstract;
 
 public class ProportionalBallFollowing extends ProportionalAbstract {
 
@@ -14,7 +13,7 @@ public class ProportionalBallFollowing extends ProportionalAbstract {
         // call super Constructor
         super();
 
-        distancesensors = new DistanceSensor[] {
+        distancesensors = new DistanceSensor[]{
                 getDistanceSensor("ps6"), // S_LEFT
                 getDistanceSensor("ps7"), // S_FRONT_LEFT
                 getDistanceSensor("ps0"), // S_FRONT_RIGHT
@@ -27,9 +26,9 @@ public class ProportionalBallFollowing extends ProportionalAbstract {
         lightsensors = new LightSensor[0];
 
         sensorVector = new double[distancesensors.length];
-        matrix = new double[][] {
-                new double[] { 0d, 1d, 2d, 3d },
-                new double[] { 3d, 2d, 1d, 0d }
+        matrix = new double[][]{
+                new double[]{0d, 1d, 2d, 3d},
+                new double[]{3d, 2d, 1d, 0d}
         };
     }
 

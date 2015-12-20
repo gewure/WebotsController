@@ -1,15 +1,7 @@
 package bangbang;
 
-// You may need to add other webots classes such as
-//  import com.cyberbotics.webots.controller.DistanceSensor;
-//  import com.cyberbotics.webots.controller.LED;
-// or more simply:
-//  import com.cyberbotics.webots.controller.*;
-
 import com.cyberbotics.webots.controller.DifferentialWheels;
 import com.cyberbotics.webots.controller.DistanceSensor;
-//import com.cyberbotics.webots.controller.LightSensor;
-
 
 public class BangBangWallFollowing extends DifferentialWheels {
 
@@ -91,20 +83,6 @@ public class BangBangWallFollowing extends DifferentialWheels {
     private void driveForward() {
         setSpeed(MAX_SPEED, MAX_SPEED);
     }
-
-
-//	private void driveStop() {
-//		setSpeed(MIN_SPEED, MIN_SPEED);
-//	}
-
-
-    // This is the main program of your controller.
-    // It creates an instance of your Robot subclass, launches its
-    // function(s) and destroys it at the end of the execution.
-    // Note that only one instance of Robot should be created in
-    // a controller program.
-    // The arguments of the main function can be specified by the
-    // "controllerArgs" field of the Robot node
 
     public static void main(String[] args) {
         BangBangWallFollowing controller = new BangBangWallFollowing();

@@ -42,7 +42,7 @@ public class BangBangBallFollowing extends DifferentialWheels {
         _sideFrontRight = new double[MOV_AVERAGE_SIZE];
         _i = 0;
 
-        distancesensors = new DistanceSensor[] {
+        distancesensors = new DistanceSensor[]{
                 getDistanceSensor("ps7"), // S_FRONT_LEFT
                 getDistanceSensor("ps0"), // S_FRONT_RIGHT
                 getDistanceSensor("ps1"), // S_SIDEFRONT_RIGHT

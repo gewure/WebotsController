@@ -8,7 +8,7 @@ public abstract class ProportionalAbstract extends DifferentialWheels {
 
     protected static int TIMESTEP = 16;
 
-    protected static double SCALE = 5.0;
+    protected static double STEPSIZE = 5.0; // speed adjustment
 
     protected static double CONSTANT = 60;
 
@@ -50,6 +50,7 @@ public abstract class ProportionalAbstract extends DifferentialWheels {
 
         double[] result = new double[matrix.length];
 
+
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[i].length; j++) {
                 result[i] += matrix[i][j] * sensorVector[j];
@@ -62,8 +63,8 @@ public abstract class ProportionalAbstract extends DifferentialWheels {
     private void scaleSpeed() {
         // scale down speed
         while (speedLeft > 1000d || speedRight > 1000d) {
-            speedLeft -= SCALE;
-            speedRight -= SCALE;
+            speedLeft -= STEPSIZE;
+            speedRight -= STEPSIZE;
         }
 
         if (speedLeft < 0d) {
@@ -85,6 +86,7 @@ public abstract class ProportionalAbstract extends DifferentialWheels {
         }
 
         int maxLength = distancesensors.length + lightsensors.length;
+
         int j = 0;
 
         while (i < maxLength) {
