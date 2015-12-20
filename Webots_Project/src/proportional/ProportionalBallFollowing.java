@@ -5,12 +5,12 @@ import com.cyberbotics.webots.controller.LightSensor;
 
 import basic.ProportionalAbstract;
 
-public class ProportionalPushBall extends ProportionalAbstract {
+public class ProportionalBallFollowing extends ProportionalAbstract {
 
     /**
      * Constructor
      */
-    public ProportionalPushBall() {
+    public ProportionalBallFollowing() {
         // call super Constructor
         super();
 
@@ -34,7 +34,7 @@ public class ProportionalPushBall extends ProportionalAbstract {
     }
 
     public static void main(String[] args) {
-        ProportionalPushBall controller = new ProportionalPushBall();
+        ProportionalBallFollowing controller = new ProportionalBallFollowing();
         controller.run();
     }
 }
