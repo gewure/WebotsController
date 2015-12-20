@@ -1,30 +1,22 @@
-// File:          A01dWallFollowing.java
-// Date:
-// Description:
-// Author:        Martin Muench, Sonja Kopf
-// Modifications:
+
 
 // You may need to add other webots classes such as
 //  import com.cyberbotics.webots.controller.DistanceSensor;
 //  import com.cyberbotics.webots.controller.LED;
 // or more simply:
 //  import com.cyberbotics.webots.controller.*;
+
 import com.cyberbotics.webots.controller.DifferentialWheels;
 import com.cyberbotics.webots.controller.DistanceSensor;
 //import com.cyberbotics.webots.controller.LightSensor;
 
 
-public class A02dWallFollowingBangBang extends DifferentialWheels {
-
-    // You may need to define your own functions or variables, like
-    // private LED led;
-
+public class BangBangWallFollowing extends DifferentialWheels {
 
     private static int S_LEFT = 0; // Sensor left
     private static int S_FRONT_LEFT = 1; // Sensor front left
     private static int S_FRONT_RIGHT = 2; // Sensor front right
     private static int S_BACK_LEFT = 3; // Sensor left
-
 
 
     private static int MAX_SENSOR_VALUE = 70;
@@ -35,14 +27,12 @@ public class A02dWallFollowingBangBang extends DifferentialWheels {
     private static int MAX_SPEED = 700; // max. motor speed
     private DistanceSensor[] sensors; // Array with all distance sensors
 
-    // A01dWallFollowing constructor
-    public A02dWallFollowingBangBang() {
 
-        // call the Robot constructor
+    public BangBangWallFollowing() {
+        // call the constructor
         super();
 
-        // get distance sensors and save them in array
-        sensors = new DistanceSensor[] {
+        sensors = new DistanceSensor[]{
                 getDistanceSensor("ps5"), // S_LEFT
                 getDistanceSensor("ps7"), // S_FRONT_LEFT
                 getDistanceSensor("ps0"), // S_FRONT_RIGHT
@@ -50,7 +40,8 @@ public class A02dWallFollowingBangBang extends DifferentialWheels {
 // 				getDistanceSensor("ps3"), // S_BACK_RIGHT
                 getDistanceSensor("ps4")  // S_BACK_LEFT
         };
-        for (int i = 0; i <4; i++)
+
+        for (int i = 0; i < 4; i++)
             sensors[i].enable(10);
 
     }
@@ -67,14 +58,9 @@ public class A02dWallFollowingBangBang extends DifferentialWheels {
                     findWall = true;
                 }
 
-            }
-
-            else if (findWall && sensors[S_LEFT].getValue() < sensors[S_BACK_LEFT].getValue()){
+            } else if (findWall && sensors[S_LEFT].getValue() < sensors[S_BACK_LEFT].getValue()) {
                 driveLeft();
-            }
-
-
-            else {
+            } else {
                 // drive forward
                 driveForward();
 
@@ -119,8 +105,9 @@ public class A02dWallFollowingBangBang extends DifferentialWheels {
     // a controller program.
     // The arguments of the main function can be specified by the
     // "controllerArgs" field of the Robot node
+
     public static void main(String[] args) {
-        A02dWallFollowingBangBang controller = new A02dWallFollowingBangBang();
+        BangBangWallFollowing controller = new BangBangWallFollowing();
         controller.run();
     }
 }

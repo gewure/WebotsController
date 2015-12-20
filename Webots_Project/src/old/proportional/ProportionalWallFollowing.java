@@ -1,19 +1,14 @@
-// File:          A01dWallFollowingProportional.java
-// Date:
-// Description:
-// Author:
-// Modifications:
 
 import com.cyberbotics.webots.controller.DistanceSensor;
 import com.cyberbotics.webots.controller.LightSensor;
 
-public class A01dWallFollowingProportional extends A01ProportionalAbstract {
+public class ProportionalWallFollowing extends ProportionalAbstract {
 
     // A01aLightProportional constructor
-    public A01dWallFollowingProportional() {
+    public ProportionalWallFollowing() {
         super();
 
-        _distancesensors = new DistanceSensor[] { getDistanceSensor("ps0"),
+        distancesensors = new DistanceSensor[] { getDistanceSensor("ps0"),
                 getDistanceSensor("ps1"),
                 getDistanceSensor("ps2"),
                 getDistanceSensor("ps3"),
@@ -23,8 +18,8 @@ public class A01dWallFollowingProportional extends A01ProportionalAbstract {
                 getDistanceSensor("ps7"),
         };
 
-        for (int i = 0; i < _distancesensors.length; i++) {
-            _distancesensors[i].enable(10);
+        for (int i = 0; i < distancesensors.length; i++) {
+            distancesensors[i].enable(10);
         }
 
         _lightsensors = new LightSensor[0];
@@ -32,11 +27,11 @@ public class A01dWallFollowingProportional extends A01ProportionalAbstract {
         _matrix = new double[][] { new double[] { 0, 0, 0, 0, 0, 1, 0, 0 },
                 new double[] {  -1, 0, 0, 0, 0, 1, 0, -1 } };
 
-        _sensorVector = new double[_distancesensors.length];
+        _sensorVector = new double[distancesensors.length];
     }
 
     public static void main(String[] args) {
-        A01dWallFollowingProportional controller = new A01dWallFollowingProportional();
+        ProportionalWallFollowing controller = new ProportionalWallFollowing();
         controller.run();
     }
 }

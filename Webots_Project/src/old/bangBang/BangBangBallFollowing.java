@@ -5,9 +5,8 @@
  */
 import com.cyberbotics.webots.controller.DifferentialWheels;
 import com.cyberbotics.webots.controller.DistanceSensor;
-import com.cyberbotics.webots.controller.LightSensor;
 
-public class A02cPushBallBangBang extends DifferentialWheels {
+public class BangBangBallFollowing extends DifferentialWheels {
 
     private static int TIME_STEP = 16;
 
@@ -30,10 +29,12 @@ public class A02cPushBallBangBang extends DifferentialWheels {
     private static int MAX_SPEED = 1000; // max. motor speed
     private DistanceSensor[] distancesensors; // Array with all distance sensors
 
-    // A02cPushBallBangBang constructor
-    public A02cPushBallBangBang() {
+    /**
+     * Constructor
+     */
+    public BangBangBallFollowing() {
 
-        // call the Robot constructor
+        // call super Constructor
         super();
 
         // initialize arrays for moving average
@@ -43,7 +44,6 @@ public class A02cPushBallBangBang extends DifferentialWheels {
         _sideFrontRight = new double[MOV_AVERAGE_SIZE];
         _i = 0;
 
-        // get distanceSensors and save them in array
         distancesensors = new DistanceSensor[] {
                 getDistanceSensor("ps7"), // S_FRONT_LEFT
                 getDistanceSensor("ps0"), // S_FRONT_RIGHT
@@ -139,7 +139,7 @@ public class A02cPushBallBangBang extends DifferentialWheels {
     }
 
     public static void main(String[] args) {
-        A02cPushBallBangBang controller = new A02cPushBallBangBang();
+        BangBangBallFollowing controller = new BangBangBallFollowing();
         controller.run();
     }
 }

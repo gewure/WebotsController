@@ -1,13 +1,15 @@
 import com.cyberbotics.webots.controller.DistanceSensor;
 import com.cyberbotics.webots.controller.LightSensor;
 
-public class A01cPushBallProportional extends A01ProportionalAbstract {
+public class ProportionalPushBall extends ProportionalAbstract {
 
-    // A02cPushBallProportional constructor
-    public A01cPushBallProportional() {
+    /**
+     * Constructor
+     */
+    public ProportionalPushBall() {
+        // call super Constructor
         super();
 
-        // get distanceSensors and save them in array
         _distancesensors = new DistanceSensor[] {
                 getDistanceSensor("ps6"), // S_LEFT
                 getDistanceSensor("ps7"), // S_FRONT_LEFT
@@ -28,7 +30,7 @@ public class A01cPushBallProportional extends A01ProportionalAbstract {
     }
 
     public static void main(String[] args) {
-        A01cPushBallProportional controller = new A01cPushBallProportional();
+        ProportionalPushBall controller = new ProportionalPushBall();
         controller.run();
     }
 }

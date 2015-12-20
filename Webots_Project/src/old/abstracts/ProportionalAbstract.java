@@ -2,27 +2,26 @@ import com.cyberbotics.webots.controller.DifferentialWheels;
 import com.cyberbotics.webots.controller.DistanceSensor;
 import com.cyberbotics.webots.controller.LightSensor;
 
-public abstract class A01ProportionalAbstract extends
-        DifferentialWheels {
+public abstract class ProportionalAbstract extends DifferentialWheels {
 
-    protected static int TIME_STEP = 32;
+    protected static int TIMESTEP = 16;
 
     protected static double SCALE = 5.0;
 
     protected static double CONSTANT = 60;
 
-    protected double _sensorVector[];
-    protected double _matrix[][];
+    protected double sensorVector[];
+    protected double matrix[][];
 
-    protected double _speedLeft;
-    protected double _speedRight;
+    protected double speedLeft;
+    protected double speedRight;
 
-    protected DistanceSensor[] _distancesensors;
-    protected LightSensor[] _lightsensors;
+    protected DistanceSensor[] distancesensors;
+    protected LightSensor[] lightsensors;
 
     public void run() {
 
-        while (step(TIME_STEP) != -1) {
+        while (step(TIMESTEP) != -1) {
 
             readSensor();
             calculateSpeeds();
@@ -34,24 +33,24 @@ public abstract class A01ProportionalAbstract extends
 
         double[] calcVector = operateMatrixVector();
 
-        _speedLeft = calcVector[0] * CONSTANT;
-        _speedRight = calcVector[1] * CONSTANT;
+        speedLeft = calcVector[0] * CONSTANT;
+        speedRight = calcVector[1] * CONSTANT;
         scaleSpeed();
-        setSpeed(_speedLeft, _speedRight);
+        setSpeed(speedLeft, speedRight);
 
     }
 
     private double[] operateMatrixVector() {
 
-        if (_matrix[0].length != _sensorVector.length) {
+        if (matrix[0].length != sensorVector.length) {
             throw new IllegalStateException();
         }
 
-        double[] result = new double[_matrix.length];
+        double[] result = new double[matrix.length];
 
-        for (int i = 0; i < _matrix.length; i++) {
-            for (int j = 0; j < _matrix[i].length; j++) {
-                result[i] += _matrix[i][j] * _sensorVector[j];
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[i].length; j++) {
+                result[i] += matrix[i][j] * sensorVector[j];
             }
         }
 
@@ -60,17 +59,17 @@ public abstract class A01ProportionalAbstract extends
 
     private void scaleSpeed() {
         // scale down speed
-        while (_speedLeft > 1000d || _speedRight > 1000d) {
-            _speedLeft -= SCALE;
-            _speedRight -= SCALE;
+        while (speedLeft > 1000d || speedRight > 1000d) {
+            speedLeft -= SCALE;
+            speedRight -= SCALE;
         }
 
-        if (_speedLeft < 0d) {
-            _speedLeft = 0d;
+        if (speedLeft < 0d) {
+            speedLeft = 0d;
         }
 
-        if (_speedRight < 0d) {
-            _speedRight = 0d;
+        if (speedRight < 0d) {
+            speedRight = 0d;
         }
     }
 
@@ -78,16 +77,16 @@ public abstract class A01ProportionalAbstract extends
 
         int i = 0;
 
-        while (i < _lightsensors.length) {
-            _sensorVector[i] = _lightsensors[i].getValue();
+        while (i < lightsensors.length) {
+            sensorVector[i] = lightsensors[i].getValue();
             i++;
         }
 
-        int maxLength = _distancesensors.length + _lightsensors.length;
+        int maxLength = distancesensors.length + lightsensors.length;
         int j = 0;
 
-        while (i < maxLength ) {
-            _sensorVector[j] = _distancesensors[j].getValue();
+        while (i < maxLength) {
+            sensorVector[j] = distancesensors[j].getValue();
             j++;
             i++;
         }

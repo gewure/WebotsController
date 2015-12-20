@@ -7,7 +7,7 @@ import com.cyberbotics.webots.controller.DifferentialWheels;
 import com.cyberbotics.webots.controller.DistanceSensor;
 import com.cyberbotics.webots.controller.LightSensor;
 
-public class A02bLightStopBangBang extends DifferentialWheels {
+public class BangBangLightLove extends DifferentialWheels {
 
     private static int TIME_STEP = 16;
     private static int MAX_SENSOR_VALUE = 200;
@@ -22,13 +22,14 @@ public class A02bLightStopBangBang extends DifferentialWheels {
     private LightSensor[] lightsensors; // Array with all light sensors
     private DistanceSensor[] distancesensors; // Array with all light sensors
 
-    // A01aLightController constructor
-    public A02bLightStopBangBang() {
+    /**
+     * Constructor
+     */
+    public BangBangLightLove() {
 
-        // call the Robot constructor
+        //call superconstructor
         super();
 
-        // get light sensors and save them in array
         lightsensors = new LightSensor[] {
                 getLightSensor("ls5"), // S_LEFT
                 getLightSensor("ls7"), // S_FRONT_LEFT
@@ -107,8 +108,9 @@ public class A02bLightStopBangBang extends DifferentialWheels {
     // a controller program.
     // The arguments of the main function can be specified by the
     // "controllerArgs" field of the Robot node
+
     public static void main(String[] args) {
-        A02bLightStopBangBang controller = new A02bLightStopBangBang();
+        BangBangLightLove controller = new BangBangLightLove();
         controller.run();
     }
 }

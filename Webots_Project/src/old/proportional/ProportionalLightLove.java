@@ -1,8 +1,3 @@
-// File:          A01bLightStopProportional.java
-// Date:
-// Description:
-// Author:
-// Modifications:
 
 // You may need to add other webots classes such as
 //  import com.cyberbotics.webots.controller.DistanceSensor;
@@ -12,10 +7,14 @@
 import com.cyberbotics.webots.controller.DistanceSensor;
 import com.cyberbotics.webots.controller.LightSensor;
 
-public class A01bLightStopProportional extends A01ProportionalAbstract {
+public class ProportionalLightLove extends ProportionalAbstract {
 
-    // A01aLightProportional constructor
-    public A01bLightStopProportional() {
+    /**
+     * Constructor
+     */
+    public ProportionalLightLove() {
+
+        // call super Constructor
         super();
         _lightsensors = new LightSensor[] {
                 getLightSensor("ls5"), // S_LEFT
@@ -45,7 +44,7 @@ public class A01bLightStopProportional extends A01ProportionalAbstract {
     }
 
     public static void main(String[] args) {
-        A01bLightStopProportional controller = new A01bLightStopProportional();
+        ProportionalLightLove controller = new ProportionalLightLove();
         controller.run();
     }
 }

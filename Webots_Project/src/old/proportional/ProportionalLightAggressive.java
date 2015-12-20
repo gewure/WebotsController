@@ -1,15 +1,15 @@
-// File:          A01aLightProportional.java
-// Date:
-// Description:
-// Author:
-// Modifications:
+
 
 import com.cyberbotics.webots.controller.DistanceSensor;
 import com.cyberbotics.webots.controller.LightSensor;
 
-public class A01aLightProportional extends A01ProportionalAbstract {
+public class ProportionalLightAggressive extends ProportionalAbstract {
 
-    public A01aLightProportional() {
+    /**
+     * Constructor
+     */
+    public ProportionalLightAggressive() {
+        // call super Constructor
         super();
 
         _lightsensors = new LightSensor[] { getLightSensor("ls5"), // S_LEFT
@@ -32,7 +32,7 @@ public class A01aLightProportional extends A01ProportionalAbstract {
     }
 
     public static void main(String[] args) {
-        A01aLightProportional controller = new A01aLightProportional();
+        ProportionalLightAggressive controller = new ProportionalLightAggressive();
         controller.run();
     }
 }
