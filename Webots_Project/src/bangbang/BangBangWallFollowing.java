@@ -1,4 +1,4 @@
-
+package bangbang;
 
 // You may need to add other webots classes such as
 //  import com.cyberbotics.webots.controller.DistanceSensor;
